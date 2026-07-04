@@ -11,6 +11,9 @@ import SellerProducts from './pages/seller/SellerProducts';
 import SellerProductForm from './pages/seller/SellerProductForm';
 import SellerOrders from './pages/seller/SellerOrders';
 import OrderSuccess from './pages/OrderSuccess';
+import AdminLayout from './layouts/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminCategories from './pages/admin/AdminCategories';
 
 function App() {
   return (
@@ -39,6 +42,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* Admin routes */}
+          <Route element={
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+             <AdminLayout />
+            </ProtectedRoute>
+          }></Route>
+          <Route path="/admin/dashboard"   element={<AdminDashboard />}   />
+          <Route path="/admin/categories"  element={<AdminCategories />}   />
 
           {/* Seller routes */}
           <Route path="/seller/products" element={
